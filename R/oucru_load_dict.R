@@ -173,10 +173,10 @@ get_dict <- function(dataset){
   getOption('data_dict')$dict[dataset]
 }
 
-#' @rdname add_cat
+#' @rdname new_cat
 #' @param cat_name category names. If missing, print all categories.
 #' @export
 get_cat <- function(cat_name){
   if (missing(cat_name)) return(getOption('data_dict')$cat)
-  getOption('data_dict')$cat[[cat]]
+  getOption('data_dict')$cat[[cat_name]]
 }

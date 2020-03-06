@@ -30,7 +30,7 @@ new_cat <- function(cat_name, cat_table){
   invisible(TRUE)
 }
 
-#' @rdname add_cat
+#' @rdname new_cat
 #' @export
 remove_cat <- function(cat_name){
   data_dict <- getOption('data_dict')

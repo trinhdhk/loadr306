@@ -4,7 +4,6 @@
 \alias{load_dict}
 \alias{push_dict}
 \alias{get_dict}
-\alias{get_cat}
 \alias{save_dict}
 \alias{clear_dict}
 \title{Load/push/remove data dictionaries}
@@ -14,8 +13,6 @@ load_dict(path, ext, ...)
 push_dict(path, ext, ...)
 
 get_dict(dataset)
-
-get_cat(cat)
 
 save_dict(file)
 
@@ -31,8 +28,6 @@ If missing, will be automatically regconised using file extension.}
 One of them is template, default is clires_auto, which smartly selects between 2 versions of CliRes.}
 
 \item{dataset}{which dataset'dictionary should be removed. If missing, all exisiting dictionaries are removed.}
-
-\item{cat}{category names. If missing, print all categories.}
 
 \item{file}{path to save dictionary}
 }
