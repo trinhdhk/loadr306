@@ -177,6 +177,6 @@ get_dict <- function(dataset){
 #' @param cat_name category names. If missing, print all categories.
 #' @export
 get_cat <- function(cat_name){
-  if (missing(cat)) return(getOption('data_dict')$cat)
+  if (missing(cat_name)) return(getOption('data_dict')$cat)
   getOption('data_dict')$cat[[cat]]
 }
