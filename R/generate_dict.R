@@ -33,7 +33,7 @@
   type <- type[1]
 
   if (is.datetime) {
-    v.orders <- guess_datetime_order(v)
+    v.orders <- ._guess_datetime_order_(v, v.name)
     if (!length(v.orders)) type <- 'string'
   }
   fmt <- switch(type,

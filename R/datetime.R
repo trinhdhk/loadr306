@@ -4,6 +4,11 @@
 #' @return A vector of order candidates, if no candidates, return NULL
 #' @export
 guess_datetime_order <- function(x){
+  name.x <- deparse(substitute(x))
+  ._guess_datetime_order_(x, name.x)
+}
+
+._guess_datetime_order_ <- function(x, name.x){
   x <- na.blank.omit(x)
   if (grepl('((?=\\d)T(?=\\d))|((\\?=\\d)Z$)', '', x, perl = TRUE)) #ISO format
     return(lubridate::parse_date_time(x, orders = 'ymdHMS'))
@@ -48,7 +53,7 @@ guess_datetime_order <- function(x){
 
     if (n.time == 3) hms_orders <- 'HMS'
     if (n.time == 2) {
-      have.hours <- sapply(split.time, function(x) all(x < 24))
+      have.hours <- unlist(sapply(split.time, function(x) all(x < 24)))
       if (sum(have.hours) == 2) hms_orders <- 'HM'
       else if (sum(have.hours) == 1) hms_orders <- paste0(c('H', 'M')[which(have.hours), which(!have.hours)], collapse = '')
       else hms_orders <- 'MS'
@@ -58,13 +63,17 @@ guess_datetime_order <- function(x){
   } else {
     split.x <- strsplit(x, seps, fixed = TRUE)
     n.x <- unique(sapply(split.x, length))
+    if (length(n.x)>1) {
+      warning('Inconsistent formats of date/time detected for variable: ', name.x)
+      return(NULL)
+    }
     if (n.x > 3) return(NULL)
     split.x <- purrr::transpose(split.x)
     is.time <- all(seps %in% c('.', ':'))
     if (is.time){
       if (n.x == 3) orders <- 'HMS'
       if (n.x == 2) {
-        have.hours <- sapply(split.x, function(x) all(x < 24))
+        have.hours <- unlist(sapply(split.x, function(x) x < 24))
         if (sum(have.hours) == 2) orders <- 'HM'
         else if (sum(have.hours) == 1) orders <- paste0(c('H', 'M')[which(have.hours), which(!have.hours)], collapse = '')
         else orders <- 'MS'
