@@ -1,3 +1,9 @@
+#' Category list manipulation
+#' @description Add/remove/change category levels
+#' @param cat_name name of category
+#' @param cat_table a data.frame of two columns: value<int> and label<string>, following the format of a factor
+#' @return TRUE
+#' @export
 new_cat <- function(cat_name, cat_table){
   cat <- get_cat()
   cat_table <- as.data.frame(cat_table, stringsAsFactor = FALSE)
@@ -24,6 +30,8 @@ new_cat <- function(cat_name, cat_table){
   invisible(TRUE)
 }
 
+#' @rdname add_cat
+#' @export
 remove_cat <- function(cat_name){
   data_dict <- getOption('data_dict')
   cat <- data_dict$cat
