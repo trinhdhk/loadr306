@@ -1,0 +1,11 @@
+Package: loadr306
+Type: Package
+Title: A package to smartly load and extract OUCRU data automatically.
+Version: 0.1.0
+Author: Trinh Dong Huu Khanh
+Maintainer: Trinh Dong Huu Khanh <trinhdhk@oucru.org>
+Description: A package to load and extract OUCRU data automatically, taking into account the data dictionary to recognise data types.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.0.2
